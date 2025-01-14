@@ -56,12 +56,7 @@ export const Title = styled.h2`
   font-family: 'Road Rage', serif;
   font-weight: 400;
   font-size: 40px;
-  color: rgb(235, 235, 235);
-
-  span {
-    color: #9758a6;
-    font-family: 'Road Rage', serif;
-  }
+  color: #9758a6;
 `;
 
 export const Form = styled.form`
