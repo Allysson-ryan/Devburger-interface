@@ -38,6 +38,7 @@ export const RightContainer = styled.div`
   max-width: 50%;
 
   background: url('${Background}');
+  background-size: 100%;
   background-color: #1e1e1e;
   opacity: 97%;
 
