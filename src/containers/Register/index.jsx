@@ -85,7 +85,7 @@ export function Register() {
         <Title>Criar Conta</Title>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputContainer>
-            <label>Nome</label>
+            <label>Nome e sobrenome</label>
             <input type="text" {...register('name')} />
             <p> {errors?.name?.message}</p>
           </InputContainer>

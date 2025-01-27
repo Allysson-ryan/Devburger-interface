@@ -4,12 +4,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 55px;
   padding: 20px;
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.white};
   cursor: grab;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: ${(props) => props.theme.black} 0px 5px 15px;
+  position: relative;
 
   div {
     width: 100%;
@@ -17,18 +18,20 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 5px;
 
     p {
       font-size: 18px;
-      color: #ff8c05;
+      color: ${(props) => props.theme.orange};
       line-height: 20px;
       font-weight: 700;
       margin-top: 40px;
+      padding-bottom: 6px;
     }
 
     strong {
       font-size: 22px;
-      color: #363636;
+      color: ${(props) => props.theme.black};
       font-weight: 800;
       line-height: 20px;
     }
