@@ -17,12 +17,25 @@ import { fromatDate } from '../../../utils//formatDate';
 import { orderStatusOptions } from './orderStatus';
 import { api } from './../../../services/api';
 
-export function Row(props) {
-  const { row } = props;
+export function Row({ row, orders, setOrders }) {
   const [open, setOpen] = useState(false);
+  const [loadin, setLoadin] = useState(false);
 
   async function newStatusOrder(id, status) {
-    await api.put(`orders/${id}`, { status });
+    setLoadin(true);
+    try {
+      await api.put(`orders/${id}`, { status });
+
+      const newOrders = orders.map((order) =>
+        order._id === id ? { ...order, status } : order,
+      );
+
+      setOrders(newOrders);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoadin(false);
+    }
   }
 
   return (
@@ -51,6 +64,8 @@ export function Row(props) {
                 status.value.toLowerCase() === row.status.toLowerCase() || null,
             )}
             onChange={(status) => newStatusOrder(row.orderId, status.value)}
+            isLoading={loadin}
+            menuPortalTarget={document.body}
           />
         </TableCell>
       </TableRow>
@@ -94,6 +109,8 @@ export function Row(props) {
 }
 
 Row.propType = {
+  orders: PropTypes.array.isRequired,
+  setOrders: PropTypes.func.isRequired,
   row: PropTypes.shape({
     orderId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
