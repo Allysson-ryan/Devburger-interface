@@ -46,7 +46,6 @@ export const LabelUpload = styled.label`
   padding: 10px;
   display: flex;
   color: ${(props) => props.theme.white};
-  margin: 20px 0;
 
   > svg {
     width: 20px;
@@ -63,7 +62,7 @@ export const LabelUpload = styled.label`
 export const Select = styled(ReactSelect)``;
 
 export const SubmitButton = styled(Button)`
-  margin-top: 45px;
+  margin-top: 20px;
 `;
 
 export const ErrorMessage = styled.span`
@@ -71,4 +70,19 @@ export const ErrorMessage = styled.span`
   font-size: 14px;
   line-height: 80%;
   font-weight: 600;
+  margin-bottom: 20px;
+`;
+
+export const ContainerCheckbox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
 `;
