@@ -7,10 +7,6 @@ DevBurger Interface é a aplicação frontend para o gerenciamento e interação
 
 <br>
 
-🚧 **Status do Projeto:** Em desenvolvimento 🚧
-
-<br>
-
 > **Nota:** Esta interface estará conectada à API [DevBurger API](https://github.com/Allysson-ryan/devburger-api), que fornece os dados e funcionalidades necessários para o funcionamento do sistema.
 
 ## Índice
