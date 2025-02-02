@@ -29,6 +29,45 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    setCartProducts([]);
+    updateLocalStorage([]);
+  };
+
+  const deleteProduct = (productId) => {
+    const newCart = cartProducts.filter((prd) => prd.id !== productId);
+
+    setCartProducts(newCart);
+    updateLocalStorage(newCart);
+  };
+
+  const increaseProduct = (productId) => {
+    const newCart = cartProducts.map((prd) => {
+      return prd.id === productId
+        ? { ...prd, quantity: prd.quantity + 1 }
+        : prd;
+    });
+    setCartProducts(newCart);
+    updateLocalStorage(newCart);
+  };
+
+  const decreaseProduct = (productId) => {
+    const cartIndex = cartProducts.findIndex((prod) => prod.id === productId);
+
+    if (cartProducts[cartIndex].quantity > 1) {
+      const newCart = cartProducts.map((prd) => {
+        return prd.id === productId
+          ? { ...prd, quantity: prd.quantity - 1 }
+          : prd;
+      });
+
+      setCartProducts(newCart);
+      updateLocalStorage(newCart);
+    } else {
+      deleteProduct(productId);
+    }
+  };
+
   const updateLocalStorage = (products) => {
     localStorage.setItem('devburger:cartInfo', JSON.stringify(products));
   };
@@ -45,6 +84,10 @@ export const CartProvider = ({ children }) => {
       value={{
         cartProducts,
         putProductInCart,
+        clearCart,
+        deleteProduct,
+        increaseProduct,
+        decreaseProduct,
       }}
     >
       {children}
